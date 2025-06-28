@@ -1,10 +1,10 @@
 # Site settings
-title: Editorial
-subtitle: by HTML5 UP
-email: youremailaddress@gmail.com
-description: A FREE AND FULLY RESPONSIVE SITE TEMPLATE
-baseurl: 
-url: "https://llokr1.github.io/"
+title: llokr's Blog
+subtitle: About Dev Studies
+email: ghdwlsrl100@gachon.ac.kr
+description: This blog is about my study records.
+baseurl: ""
+url: "https://llokr1.github.io"
 author:
 street_address: 1234 Somewhere Road
 city: Nashville
