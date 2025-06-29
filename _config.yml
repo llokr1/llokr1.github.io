@@ -1,6 +1,6 @@
 # Site settings
-title: llokr's Blog
-subtitle: About Dev Studies
+title: llokr's Tech Blog
+subtitle: Backend & Cloud Engineering
 email: ghdwlsrl100@gachon.ac.kr
 description: This blog is about my study records.
 baseurl: ""
@@ -10,8 +10,8 @@ street_address: 1234 Somewhere Road
 city: Nashville
 state: TN
 zip_code: 55555
-country: United States of America
-phone: (716) 555-5555
+country: Republic of Korea
+phone: 010-5850-0061
 
 # Social settings
 500px_url:
