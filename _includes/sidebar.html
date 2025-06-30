@@ -16,16 +16,18 @@
           </header>
           <ul>
             {% for cat in site.data.categories %}
+              {% assign posts_in_cat = site.categories[cat.name] %}
               <li>
                 <a href="{{ '/categories/' | append: cat.name | relative_url }}">
-                  {{ cat.name }}
+                  {{ cat.name }} {% if posts_in_cat %} ({{ posts_in_cat | size }}) {% else %} (0) {% endif %}
                 </a>
                 {% if cat.children %}
                   <ul>
                     {% for subcat in cat.children %}
+                      {% assign posts_in_subcat = site.categories[subcat.name] %}
                       <li>
                         <a href="{{ '/categories/' | append: subcat.name | relative_url }}">
-                          {{ subcat.name }}
+                          {{ subcat.name }} {% if posts_in_subcat %} ({{ posts_in_subcat | size }}) {% else %} (0) {% endif %}
                         </a>
                       </li>
                     {% endfor %}
