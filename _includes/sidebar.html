@@ -14,34 +14,15 @@
           <header class="major">
             <h2>Categories</h2>
           </header>
-          <ul>
-            <li><a href="{{ '' | absolute_url }}">About Me</a></li>
-            <li>
-              <span class="opener">Computer Science</span>
-              <ul>
-                <li><a href="#">Operating System</a></li>
-                <li><a href="#">Database</a></li>
-              </ul>
-            </li>
-            <li>
-              <span class="opener">Cloud</span>
-              <ul>
-                <li><a href="#">Docker</a></li>
-              </ul>
-            </li>
-            <li>
-              <span class="opener">Backend Development</span>
-              <ul>
-                <li><a href="#">Spring</a></li>
-              </ul>  
-            </li>
-            <li>
-              <span class="opener">My Activities</span>
-              <ul>
-                <li><a href="#">UMC</a></li>
-              </ul>  
-            </li>
-          </ul>
+            <ul>
+                {% for category in site.categories %}
+                  <li>
+                    <a href="{{ '/categories/' | append: category[0] | relative_url }}">
+                    {{ category[0] }} ({{ category[1].size }})
+                    </a>
+                  </li>
+                {% endfor %}
+            </ul>
         </nav>
 
       <!-- Section -->
