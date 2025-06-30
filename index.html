@@ -47,7 +47,7 @@ layout: default
 	<div class="posts">
 		{% for post in site.posts limit : 6 %}
 		<article>
-			<a href="{{ post.url | relative_url }}" class="image"><img src="assets/images/pic01.jpg" alt="" />
+			<a href="{{ post.url | relative_url }}" class="image">
 				{% if post.image %}
             				<img src="{{ post.image | relative_url }}" alt="" />
           			{% else %}
