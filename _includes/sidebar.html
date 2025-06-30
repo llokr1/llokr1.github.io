@@ -14,17 +14,39 @@
           <header class="major">
             <h2>Categories</h2>
           </header>
-            <ul>
-                {% for category in site.categories %}
-                  <li>
-                    <a href="{{ '/categories/' | append: category[0] | relative_url }}">
-                    {{ category[0] }} ({{ category[1].size }})
-                    </a>
-                  </li>
-                {% endfor %}
-            </ul>
+          <ul>
+            {% for cat in site.data.categories %}
+              {% assign posts_in_category = site.categories[cat.name] %}
+              <li>
+                <span class="opener">{{ cat.name }} 
+                  {% if posts_in_category %}
+                    ({{ posts_in_category | size }})
+                  {% else %}
+                    (0)
+                  {% endif %}
+                </span>
+                {% if cat.children %}
+                  <ul>
+                    {% for subcat in cat.children %}
+                      {% assign posts_in_subcategory = site.categories[subcat.name] %}
+                      <li>
+                        <a href="{{ '/categories/' | append: subcat.name | relative_url }}">
+                          {{ subcat.name }}
+                          {% if posts_in_subcategory %}
+                            ({{ posts_in_subcategory | size }})
+                          {% else %}
+                            (0)
+                          {% endif %}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
         </nav>
-
+      
       <!-- Section -->
         <section>
           <header class="major">
