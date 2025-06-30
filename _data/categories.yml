@@ -12,8 +12,8 @@
 
 - name: Backend Development
   children:
-    - name: SpringBoot
+    - name: Spring
 
--name: My Activites
+- name: My Activities
   children:
     - name: UMC
