@@ -1,0 +1,32 @@
+---
+layout: default
+title: "Backend Development Posts"
+---
+
+<header class="main">
+  <h1>Backend Development</h1>
+</header>
+
+<section class="posts">
+  {% assign category_posts = site.categories."Backend Development" %}
+  {% if category_posts %}
+    {% for post in category_posts %}
+      <article>
+        {% if post.image %}
+          <a href="{{ post.url | relative_url }}" class="image">
+            <img src="{{ post.image | relative_url }}" alt="" />
+          </a>
+        {% endif %}
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        <ul class="actions">
+          <li><a href="{{ post.url | relative_url }}" class="button">Read More</a></li>
+        </ul>
+      </article>
+    {% endfor %}
+  {% else %}
+    <p>No posts found in this category.</p>
+  {% endif %}
+</section>
+
+
