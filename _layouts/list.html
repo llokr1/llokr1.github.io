@@ -25,11 +25,11 @@
               {% else %}
                 <img src="/assets/images/default.jpg" alt="" />
               {% endif %}	
-      			</a>
             <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
             <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
             <ul class="actions">
-              <li><a href="{{ post.url | relative_url }}" class="button">Read More</a></li>
+            </a>
+              <li><a href="{{ post.url | relative_url }}" class="button">More</a></li>
             </ul>
           </article>
           {% endfor %}
