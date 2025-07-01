@@ -1,45 +1,48 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!DOCTYPE html>
 <html>
-
 {% include head.html %}
 
 <body>
+  <div id="wrapper">
+    <div id="main">
+      <div class="inner">
 
-    <!-- Wrapper -->
-    <div id="wrapper">
+        {% include header.html %}
 
-        <!-- Main -->
-        <div id="main">
-            <div class="inner">
+        <header class="major">
+          <h2>{{ page.title }}</h2>
+        </header>
 
-                {% include header.html %}
-
-                <!-- Content -->
-                <section>
-                	<header class="main">
-                		<h1>{{ page.title }}</h1>
-                	</header>
-
-                  {% if page.image %}
-                	<span class="image main"><img src="{{ page.image | absolute_url }}" alt="" /></span>
-                  {% endif %}
-
-                {{ content }}
-
-              </div>
-          </div>
-
-          {% include sidebar.html %}
+        {% assign category_posts = site.categories[page.category] %}
+        {% if category_posts %}
+        <section class="posts">
+          {% for post in category_posts %}
+          <article>
+            {% if post.image %}
+            <a href="{{ post.url | relative_url }}" class="image">
+              <img src="{{ post.image | relative_url }}" alt="" />
+            </a>
+            {% endif %}
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+            <ul class="actions">
+              <li><a href="{{ post.url | relative_url }}" class="button">Read More</a></li>
+            </ul>
+          </article>
+          {% endfor %}
+        </section>
+        {% else %}
+        <section>
+          <p>No posts found in this category.</p>
+        </section>
+        {% endif %}
 
       </div>
+    </div>
 
-      {% include footer.html %}
+    {% include sidebar.html %}
 
+  </div>
+  {% include footer.html %}
 </body>
-
 </html>
