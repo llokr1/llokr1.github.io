@@ -19,11 +19,13 @@
         <section class="posts">
           {% for post in category_posts %}
           <article>
-            {% if post.image %}
             <a href="{{ post.url | relative_url }}" class="image">
-              <img src="{{ post.image | relative_url }}" alt="" />
-            </a>
-            {% endif %}
+      				{% if post.image %}
+                <img src="{{ post.image | relative_url }}" alt="" />
+              {% else %}
+                <img src="/assets/images/default.jpg" alt="" />
+              {% endif %}	
+      			</a>
             <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
             <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
             <ul class="actions">
