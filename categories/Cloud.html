@@ -1,31 +1,5 @@
 ---
-layout: page
+layout: list
+title: Cloud
+category: Cloud
 ---
-<header class="major">
-  <h2>Cloud</h2>
-</header>
-
-{% assign category_posts = site.categories["Cloud"] %}
-{% if category_posts %}
-<section class="posts">
-  {% for post in category_posts %}
-    <article>
-      {% if post.image %}
-        <a href="{{ post.url | relative_url }}" class="image">
-          <img src="{{ post.image | relative_url }}" alt="" />
-        </a>
-      {% endif %}
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
-      <ul class="actions">
-        <li><a href="{{ post.url | relative_url }}" class="button">Read More</a></li>
-      </ul>
-    </article>
-  {% endfor %}
-</section>
-{% else %}
-<section>
-  <p>No posts found in this category.</p>
-</section>
-{% endif %}
-
