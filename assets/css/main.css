@@ -3981,7 +3981,7 @@
 		width: 120px;      /* 원하는 크기로 조정 */
 		height: 120px;
 		border-radius: 50%;
-		margin-bottom: 0.5em;
+		margin-bottom: 2em;
 		object-fit: cover;
 	}
 
@@ -3995,12 +3995,13 @@
 		font-weight: 700;     /* 굵게 */
 		color: #333;          /* 필요시 색상 조정 */
 		line-height: 1.2;
+		font-family: "Roboto Slab", serif;
 	}
 
 	.profile-subtitle {
 		font-size: 0.95em;    /* 두번째 줄 크기 */
 		color: #666;
-		margin-top: 0.2em;
+		margin-top: 0.5em;
 	}
 
 	#menu ul {
