@@ -3610,7 +3610,7 @@
 			#sidebar > .inner > * {
 				border-bottom: solid 2px rgba(210, 215, 217, 0.75);
 				margin: 0 0 3.5em 0;
-				padding: 0 0 3.5em 0;
+				padding: 0 0 5em 0;
 			}
 
 				#sidebar > .inner > * > :last-child {
@@ -3969,38 +3969,38 @@
 
 	/* Profile Section */
 
-	#sidebar .profile {
-	  text-align: center;
-	  margin-bottom: 2em;
-	}
-	
-	#sidebar .profile .image.avatar {
-	  display: inline-block;
-	  border-radius: 50%;
-	  overflow: hidden;
-	  width: 100px;
-	  height: 100px;
-	  margin-bottom: 1em;
-	}
-	
-	#sidebar .profile .image.avatar img {
-	  width: 100%;
-	  height: auto;
-	}
-	
-	#sidebar .profile h2 {
-	  margin: 0 0 0.5em 0;
-	  font-size: 1.2em;
-	  font-weight: bold;
-	}
-	
-	#sidebar .profile p {
-	  font-size: 0.9em;
-	  color: #777;
+	.profile {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start; /* 왼쪽 정렬 */
+		text-align: left;
+		margin-bottom: 2em;
 	}
 
-	#sidebar nav#menu {
-	  margin-top: 2em;
+	.profile-image {
+		width: 120px;      /* 원하는 크기로 조정 */
+		height: 120px;
+		border-radius: 50%;
+		margin-bottom: 0.5em;
+		object-fit: cover;
+	}
+
+	.profile-text {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.profile-title {
+		font-size: 1.4em;     /* 첫번째 줄 크기 */
+		font-weight: 700;     /* 굵게 */
+		color: #333;          /* 필요시 색상 조정 */
+		line-height: 1.2;
+	}
+
+	.profile-subtitle {
+		font-size: 0.95em;    /* 두번째 줄 크기 */
+		color: #666;
+		margin-top: 0.2em;
 	}
 
 	#menu ul {
