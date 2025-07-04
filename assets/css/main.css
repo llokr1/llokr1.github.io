@@ -3967,6 +3967,42 @@
 
 /* Menu */
 
+	/* Profile Section */
+
+	#sidebar .profile {
+	  text-align: center;
+	  margin-bottom: 2em;
+	}
+	
+	#sidebar .profile .image.avatar {
+	  display: inline-block;
+	  border-radius: 50%;
+	  overflow: hidden;
+	  width: 100px;
+	  height: 100px;
+	  margin-bottom: 1em;
+	}
+	
+	#sidebar .profile .image.avatar img {
+	  width: 100%;
+	  height: auto;
+	}
+	
+	#sidebar .profile h2 {
+	  margin: 0 0 0.5em 0;
+	  font-size: 1.2em;
+	  font-weight: bold;
+	}
+	
+	#sidebar .profile p {
+	  font-size: 0.9em;
+	  color: #777;
+	}
+
+	#sidebar nav#menu {
+	  margin-top: 2em;
+	}
+
 	#menu ul {
 		-moz-user-select: none;
 		-webkit-user-select: none;
