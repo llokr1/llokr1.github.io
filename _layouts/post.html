@@ -17,10 +17,7 @@
             <p>
               {% if page.date %}
                 <small>
-                  Posted on {{ page.date | date: "%B %d, %Y" }}
-                  {% if page.categories %}
-                    in {{ page.categories | join: ", " }}
-                  {% endif %}
+                  Posted on {{ page.date | date: "%Y-%m-%d" }}
                 </small>
               {% endif %}
             </p>
