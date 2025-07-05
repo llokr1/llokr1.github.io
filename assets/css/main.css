@@ -2277,7 +2277,7 @@
 	}
 
 	header p {
-		font-family: "Roboto Slab", serif;
+		font-family: "Roboto Slab", "Noto Sans KR", serif;
 		font-size: 1em;
 		font-weight: 400;
 		letter-spacing: 0.075em;
@@ -2961,7 +2961,7 @@
 		color: #a4c8f0 !important;
 		cursor: pointer;
 		display: inline-block;
-		font-family: "Roboto Slab", serif;
+		font-family: "Roboto Slab", "Noto Sans KR", serif;
 		font-size: 0.8em;
 		font-weight: 700;
 		height: 3.5em;
@@ -3835,7 +3835,7 @@
 		#header .logo {
 			border-bottom: 0;
 			color: inherit;
-			font-family: "Roboto Slab", serif;
+			font-family: "Roboto Slab", "Noto Sans KR", serif;
 			font-size: 1.125em;
 		}
 
@@ -4017,11 +4017,12 @@
 		font-weight: 700;     /* 굵게 */
 		color: #333;          /* 필요시 색상 조정 */
 		line-height: 1.2;
-		font-family: "Roboto Slab", serif;
+		font-family: "Roboto Slab", "Noto Sans KR", serif;
 	}
 
 	.profile-subtitle {
 		font-size: 0.95em;    /* 두번째 줄 크기 */
+		font-family: "Roboto Slab", "Noto Sans KR", serif;
 		color: #666;
 		margin-top: 0.5em;
 	}
