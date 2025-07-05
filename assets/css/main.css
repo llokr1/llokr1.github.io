@@ -3459,6 +3459,28 @@
 
 		}
 
+/* Post Content */
+	.post-content h1 {
+  		font-size: 1.8em;
+	}
+
+	.post-content h2 {
+  		font-size: 1.25em;
+		border-bottom: solid 3px #a4c8f0;
+		display: inline-block;
+		margin: 0 0 1em 0;
+		padding: 0 0.75em 0.5em 0;
+	}
+
+	.post-content h3 {
+ 	 	font-size: 1.1em;
+	}
+
+	.post-content p {
+  		font-size: 1.03em;
+	}
+
+
 /* Wrapper */
 
 	#wrapper {
