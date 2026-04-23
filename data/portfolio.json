@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "role": "INFRA / CLOUD ENGINEER",
+    "name": "홍진기",
+    "tagline": "신뢰할 수 있는 클라우드 인프라를 설계하고 운영합니다.",
+    "contacts": [
+      {
+        "label": "Email",
+        "value": "ghdwlsrl100@gachon.ac.kr",
+        "url": "mailto:ghdwlsrl100@gachon.ac.kr"
+      },
+      {
+        "label": "GitHub",
+        "value": "github.com/llokr1",
+        "url": "https://github.com/llokr1"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/llokr",
+        "url": "https://www.linkedin.com/in/llokr"
+      },
+      {
+        "label": "Blog",
+        "value": "blog.example.com",
+        "url": "https://llokr.tistory.com/"
+      }
+    ]
+  },
+  "intro": {
+    "text": "인프라 엔지니어링 및 클라우드 기술에 관심 있는 학생입니다. Openstack 및 Kubernetes 기반 플랫폼 운영 및 관리에 관심이 있습니다.",
+    "stats": [
+
+    ]
+  },
+  "experience": [
+    {
+      "period": "2026.02 ~ 2026.04",
+      "title": "카카오엔터프라이즈 - 클라우드 솔루션팀 인턴",
+      "items": [
+        "카카오클라우드 자격 인증 문항 감수 및 출제",
+        "카카오클라우드 자격 인증 가이드북 제작",
+        "카카오클라우드 교육 콘텐츠 감수 및 제작",
+        "K-Digital Training 교육 운영 보조",
+        "국가 GPU 지원 교육(GPUaaS) 운영 보조",
+        "Open API 활용 카카오클라우드 교육 환경 구축 자동화 스크립트 개발"
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "멀티클라우드 DR 자동 전환 플랫폼",
+      "description": "장애 발생 시 DNS/트래픽 자동 전환과 데이터 복구 절차를 자동화한 재해 복구 체계.",
+      "highlights": ["RTO 120분 → 15분 단축", "분기별 리허설 자동화로 운영 리스크 감소"]
+    },
+    {
+      "title": "비용 가시화 FinOps 대시보드",
+      "description": "팀/서비스 단위 비용 태깅과 예산 알림으로 클라우드 비용을 체계적으로 관리.",
+      "highlights": ["월간 비용 40% 절감", "비정상 사용 패턴 조기 탐지 알림 구축"]
+    },
+    {
+      "title": "Internal Developer Platform",
+      "description": "개발팀이 셀프서비스로 인프라를 생성·배포할 수 있도록 IDP 포털 제공.",
+      "highlights": ["서비스 런칭 리드타임 평균 70% 단축", "운영팀 반복 업무를 템플릿 기반으로 축소"]
+    }
+  ],
+
+  "education": [
+    "가천대학교 컴퓨터공학과 재학 중", 
+    "경민고등학교 인문계열 졸업"
+  ],
+  "etc": [
+    { "date": "2026.03 ~ 현재", "text": "클라우드 IT 연합 동아리 Cloud Club" },
+    { "date": "2025.09 ~ 2025.12", "text": "대학기업협력형 카카오엔터프라이즈 SW아카데미 7기" },
+    { "date": "2025.03 ~ 2025.08", "text": "개발 연합 동아리 UMC 8기 SpringBoot 파트 수료" }
+  ],
+  "footerName": "홍진기"
+}
