@@ -214,6 +214,7 @@ a:focus-visible {
 .intro p {
   line-height: 1.8;
   color: var(--text);
+  white-space: pre-line;
 }
 
 .stats {
