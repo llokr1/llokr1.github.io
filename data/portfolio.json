@@ -21,7 +21,7 @@
       },
       {
         "label": "Blog",
-        "value": "blog.example.com",
+        "value": "llokr님의 블로그",
         "url": "https://llokr.tistory.com/"
       }
     ]
@@ -46,33 +46,38 @@
     }
   ],
 
-  "projects": [
+  "project": [
     {
-      "title": "",
-      "description": "",
-      "highlights": [""]
-    },
-    {
-      "title": "",
-      "description": "",
-      "highlights": [""]
-    },
-    {
-      "title": "",
-      "description": "",
-      "highlights": [""]
+      "title": "Loventure",
+      "period": "2025.09 – 2025.12",
+      "role": "인프라 / 배포 담당",
+      "description": "GitHub Actions + ArgoCD 기반 자동화 배포 파이프라인 구축",
+      "github": "https://github.com/PitterPetter",
+      "url": "",
+      "highlights": [
+        "수동 배포 프로세스를 자동화해 배포 시간 15분 → 2분으로 단축",
+        "브랜치별 환경 분리(dev/prod)로 실수로 인한 프로덕션 장애 방지"
+      ]
     }
   ],
 
   "education": [
-    "가천대학교 컴퓨터공학과 재학 중", 
-    "경민고등학교 인문계열 졸업"
+    {
+      "date": "2021.03 - ",
+      "title": "가천대학교 컴퓨터공학과",
+      "subtitle": "재학 중"
+    },
+    {
+      "date": "2018.03 - 2021.02",
+      "title": "경민고등학교",
+      "subtitle": "졸업"
+    }
   ],
   "etc": [
-    { "date": "2026.04 ~ 현재", "text": "오픈소스 컨트리뷰션 아카데미(OSSCA) OpenStack 체험형 프로젝트 참여" },
-    { "date": "2026.03 ~ 현재", "text": "클라우드 IT 연합 동아리 Cloud Club" },
-    { "date": "2025.09 ~ 2025.12", "text": "대학기업협력형 카카오엔터프라이즈 SW아카데미 7기 수료" },
-    { "date": "2025.03 ~ 2025.08", "text": "개발 연합 동아리 UMC 8기 SpringBoot 파트 수료" }
+    { "date": "2026.04 - ", "text": "오픈소스 컨트리뷰션 아카데미(OSSCA) OpenStack 체험형 프로젝트 참여" },
+    { "date": "2026.03 - ", "text": "클라우드 IT 연합 동아리 Cloud Club" },
+    { "date": "2025.09 - 2025.12", "text": "대학기업협력형 카카오엔터프라이즈 SW아카데미 7기 수료" },
+    { "date": "2025.03 - 2025.08", "text": "개발 연합 동아리 UMC 8기 SpringBoot 파트 수료" }
   ],
   "footerName": "홍진기"
 }

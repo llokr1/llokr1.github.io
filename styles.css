@@ -23,6 +23,8 @@ body {
   background: var(--bg);
   color: var(--text);
   scroll-behavior: smooth;
+  line-height: 1.65;
+  font-size: 15px;
 }
 
 body {
@@ -92,7 +94,7 @@ main,
 }
 
 .eyebrow {
-  color: var(--muted);
+  color: var(--primary);
   letter-spacing: 0.08em;
   margin: 0;
   font-size: 13px;
@@ -102,7 +104,7 @@ main,
 h1 {
   margin: 10px 0;
   font-size: clamp(2.1rem, 5.5vw, 3.25rem);
-  color: var(--name-color);
+  color: var(--text);
   font-weight: 500;
 }
 
@@ -195,11 +197,11 @@ a:focus-visible {
 
 .section > h2 {
   margin: 0 0 16px;
-  font-size: 1.55rem;
-  letter-spacing: -0.01em;
-  text-transform: none;
-  color: var(--name-color);
-  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 700;
   text-align: left;
 }
 
@@ -207,7 +209,7 @@ a:focus-visible {
   content: "";
   display: block;
   height: 1px;
-  background: var(--line);
+  background: var(--text);
   margin-top: 12px;
 }
 
@@ -258,6 +260,15 @@ a:focus-visible {
   gap: 14px;
 }
 
+#project .cards {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+#project .dated-item + .dated-item {
+  border-top: 1px solid var(--line);
+}
+
 .card {
   background: var(--surface-soft);
   border: 1px solid var(--line);
@@ -277,6 +288,60 @@ a:focus-visible {
 .card ul {
   margin: 10px 0 0;
   padding-left: 18px;
+}
+
+.project-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-item__header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.project-item__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: 0.88rem;
+}
+
+.project-item__role {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.project-item__sep {
+  color: var(--line);
+  user-select: none;
+}
+
+.project-item__link {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-item__link:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.project-item__problems-label {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 10px 0 4px;
 }
 
 .skill-groups {
@@ -332,28 +397,28 @@ a:focus-visible {
 
 .dated-item__title {
   margin: 0;
-  font-size: 1.18rem;
-  font-weight: 800;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--text);
 }
 
 .dated-item__text {
   color: var(--text);
-  font-weight: 700;
-  font-size: 1.02rem;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .dated-item__subtitle {
   margin: 6px 0 0;
   color: var(--muted);
-  font-style: italic;
-  line-height: 1.55;
+  font-style: normal;
+  line-height: 1.65;
 }
 
 .dated-item__list {
   margin: 10px 0 0;
   padding-left: 18px;
-  line-height: 1.65;
+  line-height: 1.75;
   color: var(--text);
   text-align: left;
 }

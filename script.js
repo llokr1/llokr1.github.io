@@ -113,48 +113,46 @@ const renderPortfolio = (data) => {
 
   const projectList = document.getElementById("projectList");
   if (projectList) {
-    const projects = (data.projects || []).filter(
+    const projects = (data.project || []).filter(
       (p) => p && (isNonEmptyText(p.title) || isNonEmptyText(p.description) || countMeaningfulItems(p.highlights) > 0)
     );
     projectList.innerHTML = projects
-      .map(
-        (project) => {
-          const date =
-            typeof project.period === "string"
-              ? project.period
-              : typeof project.date === "string"
-                ? project.date
-                : "";
-          const title = typeof project.title === "string" ? project.title : "";
-          const subtitle = typeof project.description === "string" ? project.description : "";
-          const bullets = Array.isArray(project.highlights)
-            ? project.highlights.filter(isNonEmptyText)
-            : [];
+      .map((project) => {
+        const title = typeof project.title === "string" ? project.title : "";
+        const period = typeof project.period === "string" ? project.period : "";
+        const role = typeof project.role === "string" ? project.role : "";
+        const desc = typeof project.description === "string" ? project.description : "";
+        const github = typeof project.github === "string" ? project.github : "";
+        const url = typeof project.url === "string" ? project.url : "";
+        const bullets = Array.isArray(project.highlights)
+          ? project.highlights.filter(isNonEmptyText)
+          : [];
 
-          // 날짜가 있으면 스샷처럼 "왼쪽 날짜 / 오른쪽 내용(리스트)" 레이아웃을 사용
-          if (date) {
-            return `
-              <article class="dated-item">
-                <div class="dated-item__date">${date}</div>
-                <div class="dated-item__body">
-                  <div class="dated-item__text">${title}</div>
-                  ${subtitle ? `<p class="dated-item__subtitle">${subtitle}</p>` : ""}
-                  ${bullets.length ? `<ul class="dated-item__list">${bullets.map((b) => `<li>${b}</li>`).join("")}</ul>` : ""}
+        const linkParts = [];
+        if (github) linkParts.push(`<a class="project-item__link" href="${github}" target="_blank" rel="noreferrer">GitHub ↗</a>`);
+        if (url) linkParts.push(`<a class="project-item__link" href="${url}" target="_blank" rel="noreferrer">Live ↗</a>`);
+
+        return `
+          <article class="dated-item">
+            <div class="dated-item__date">${period}</div>
+            <div class="dated-item__body">
+              <div class="project-item__header">
+                <div class="project-item__header-left">
+                  <h3 class="dated-item__title">${title}</h3>
+                  ${role ? `<span class="project-item__role">${role}</span>` : ""}
                 </div>
-              </article>
-            `;
-          }
-
-          // 날짜가 없으면 기존 카드 형태 유지
-          return `
-            <article class="card">
-              <h3>${title}</h3>
-              <p>${subtitle}</p>
-              <ul>${bullets.map((item) => `<li>${item}</li>`).join("")}</ul>
-            </article>
-          `;
-        }
-      )
+                ${linkParts.length ? `<div class="project-item__links">${linkParts.join('<span class="project-item__sep">·</span>')}</div>` : ""}
+              </div>
+              ${desc ? `<p class="dated-item__subtitle">${desc}</p>` : ""}
+              ${bullets.length ? `
+                <div>
+                  <span class="project-item__problems-label">주요 성과</span>
+                  <ul class="dated-item__list">${bullets.map((b) => `<li>${b}</li>`).join("")}</ul>
+                </div>` : ""}
+            </div>
+          </article>
+        `;
+      })
       .join("");
     setSectionVisible("projects", projects.length > 0);
   }
@@ -215,8 +213,25 @@ const renderPortfolio = (data) => {
 
   const educationList = document.getElementById("educationList");
   if (educationList) {
-    const education = (data.education || []).filter(isNonEmptyText);
-    educationList.innerHTML = education.map((item) => `<li>${item}</li>`).join("");
+    const education = (data.education || []).filter((item) => {
+      if (typeof item === "string") return isNonEmptyText(item);
+      if (item && typeof item === "object") return isNonEmptyText(item.title);
+      return false;
+    });
+    educationList.innerHTML = education.map((item) => {
+      if (typeof item === "string") return `<li>${item}</li>`;
+      const date = typeof item.date === "string" ? item.date : "";
+      const title = typeof item.title === "string" ? item.title : "";
+      const subtitle = typeof item.subtitle === "string" ? item.subtitle : "";
+      return `
+        <li class="dated-item">
+          ${date ? `<div class="dated-item__date">${date}</div>` : ""}
+          <div class="dated-item__body">
+            <span class="dated-item__text">${title}</span>
+            ${subtitle ? `<p class="dated-item__subtitle">${subtitle}</p>` : ""}
+          </div>
+        </li>`;
+    }).join("");
     setSectionVisible("education", education.length > 0);
   }
 
