@@ -206,8 +206,32 @@ const renderPortfolio = (data) => {
 
   const openSourceList = document.getElementById("openSourceList");
   if (openSourceList) {
-    const oss = (data.openSource || []).filter(isNonEmptyText);
-    openSourceList.innerHTML = oss.map((item) => `<li>${item}</li>`).join("");
+    const oss = (data.openSource || []).filter(
+      (item) => item && (isNonEmptyText(item.project) || isNonEmptyText(item.name))
+    );
+    openSourceList.innerHTML = oss
+      .map((item) => {
+        const statusEl = isNonEmptyText(item.status)
+          ? ` <span class="project-item__role">${item.status}</span>`
+          : "";
+
+        if (item.type === "project") {
+          const name = item.name || "";
+          const desc = item.description || "";
+          const github = item.github || "";
+          const url = item.url || "";
+          const linkParts = [];
+          if (github) linkParts.push(`<a class="project-item__link" href="${github}" target="_blank" rel="noreferrer">GitHub ↗</a>`);
+          if (url) linkParts.push(`<a class="project-item__link" href="${url}" target="_blank" rel="noreferrer">Live ↗</a>`);
+          return `<li class="dated-item"><div class="dated-item__date">${name}</div><div class="dated-item__body"><span class="dated-item__text">${desc}${statusEl}</span>${linkParts.length ? `<div class="project-item__links" style="margin-left:0;margin-right:0;margin-top:4px;">${linkParts.join('<span class="project-item__sep"> · </span>')}</div>` : ""}</div></li>`;
+        }
+
+        const titleEl = isNonEmptyText(item.url)
+          ? `<a href="${item.url}" target="_blank" rel="noreferrer">${item.title} ↗</a>`
+          : item.title;
+        return `<li class="dated-item"><div class="dated-item__date">${item.project}</div><div class="dated-item__body"><span class="dated-item__text">${titleEl}${statusEl}</span></div></li>`;
+      })
+      .join("");
     setSectionVisible("open-source", oss.length > 0);
   }
 

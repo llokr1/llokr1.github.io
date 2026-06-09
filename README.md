@@ -13,7 +13,7 @@
 - **`hero`**: 첫 화면(헤더) 정보
 - **`intro`**: 소개 문단 + 숫자/지표 카드
 - **`experience`**: 경력 타임라인
-- **`projects`**: 프로젝트 카드 목록
+- **`project`**: 프로젝트 카드 목록
 - **`skills`**: 스킬 그룹(2열 카드)
 - **`presentation`**: 발표/세미나 리스트
 - **`article`**: 아티클(작성/발행) 리스트
@@ -89,22 +89,30 @@
 - **`title`**: 한 줄 타이틀
 - **`items[]`**: 불릿 리스트(구체적인 수치/효과를 넣으면 좋습니다)
 
-##### `projects[]`
+##### `project[]`
 
 ```json
 {
-  "projects": [
+  "project": [
     {
-      "title": "프로젝트명",
+      "title":       "프로젝트명",
+      "period":      "2025.09 – 2025.12",
+      "role":        "인프라 / 배포 담당",
       "description": "무엇을/왜 했는지 1~2문장",
-      "highlights": ["핵심 성과 1", "핵심 성과 2"]
+      "github":      "https://github.com/...",
+      "url":         "",
+      "highlights":  ["핵심 성과 1", "핵심 성과 2"]
     }
   ]
 }
 ```
 
-- **`title`**: 카드 제목
-- **`description`**: 카드 설명
+- **`title`**: 프로젝트명
+- **`period`**: 기간
+- **`role`**: 담당 역할 (파란색 뱃지로 표시)
+- **`description`**: 한 줄 설명
+- **`github`**: GitHub 링크 (없으면 빈 문자열)
+- **`url`**: 라이브 서비스 링크 (없으면 빈 문자열)
 - **`highlights[]`**: 불릿(성과 중심 권장)
 
 ##### `skills[]`
@@ -125,25 +133,92 @@
 ```json
 {
   "presentation": [
-    { "year": "2025", "title": "발표 제목" }
+    {
+      "year":  "2025",
+      "title": "발표 제목",
+      "items": ["세부 내용 1", "세부 내용 2"]
+    }
   ]
 }
 ```
 
-##### 문자열 리스트 섹션들
+- **`year`**: 연도 또는 날짜
+- **`title`**: 발표 제목
+- **`items[]`**: 세부 내용 불릿 (없으면 생략 가능)
 
-아래 섹션들은 **문자열 배열**로 작성합니다.
+##### `openSource[]`
+
+`type` 필드로 **기여(`contribution`)** 와 **직접 제작(`project`)** 두 가지를 구분합니다.
+
+**기여한 오픈소스 (`type: "contribution"`)**
 
 ```json
 {
-  "article": ["글 제목 1", "글 제목 2"],
-  "openSource": ["활동 1", "활동 2"],
-  "education": ["학력/자격 1", "학력/자격 2"],
-  "etc": ["기타 1", "기타 2"]
+  "type":    "contribution",
+  "project": "org/repo-name",
+  "title":   "PR 제목 또는 기여 내용",
+  "url":     "https://PR-또는-커밋-링크",
+  "status":  "Merged"
 }
 ```
 
-##### `etc` (기타 활동: 날짜 + 내용)
+- **`project`**: 기여 대상 레포 (왼쪽 컬럼에 표시)
+- **`title`**: PR 제목 또는 기여 내용
+- **`url`**: PR / 리뷰 / 커밋 링크 (없으면 빈 문자열)
+- **`status`**: `Merged` / `Open` / `Closed` 등
+
+**직접 만든 오픈소스 (`type: "project"`)**
+
+```json
+{
+  "type":        "project",
+  "name":        "my-project",
+  "description": "프로젝트 한 줄 설명",
+  "github":      "https://github.com/llokr1/my-project",
+  "url":         "",
+  "status":      "Active"
+}
+```
+
+- **`name`**: 프로젝트명 (왼쪽 컬럼에 표시)
+- **`description`**: 무엇을 하는 프로젝트인지 한 줄 설명
+- **`github`**: GitHub 레포 링크
+- **`url`**: 라이브 데모/배포 링크 (없으면 빈 문자열)
+- **`status`**: `Active` / `Archived` 등
+
+---
+
+##### `education[]`
+
+```json
+{
+  "education": [
+    {
+      "date":     "2021.03 - ",
+      "title":    "가천대학교 컴퓨터공학과",
+      "subtitle": "재학 중"
+    }
+  ]
+}
+```
+
+- **`date`**: 입학/취득 연도 (왼쪽 컬럼에 표시)
+- **`title`**: 학교명 또는 자격증명
+- **`subtitle`**: 재학 중 / 졸업 / 취득 등 상태 (없으면 생략 가능)
+
+---
+
+##### `article`
+
+```json
+{
+  "article": ["글 제목 1", "글 제목 2"]
+}
+```
+
+문자열 배열로 작성합니다.
+
+##### `etc[]` (기타 활동: 날짜 + 내용)
 
 `etc`는 아래 두 형태를 모두 지원합니다.
 

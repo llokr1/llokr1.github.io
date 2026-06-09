@@ -52,7 +52,7 @@ main,
 .hero__profile {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
 }
 
@@ -293,7 +293,6 @@ a:focus-visible {
 .project-item__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
 }
 
@@ -310,6 +309,8 @@ a:focus-visible {
   gap: 8px;
   flex-shrink: 0;
   font-size: 0.88rem;
+  margin-left: auto;
+  margin-right: 16px;
 }
 
 .project-item__role {
@@ -377,7 +378,7 @@ a:focus-visible {
 .dated-item {
   display: grid;
   grid-template-columns: 160px 1fr;
-  gap: 22px;
+  gap: 60px;
   align-items: start;
   padding: 14px 0;
 }
@@ -551,7 +552,18 @@ body.dark .hero__quick-nav a {
   }
 }
 
+@page {
+  size: A4 portrait;
+  margin: 14mm 16mm 14mm 16mm;
+}
+
 @media print {
+  html, body {
+    font-size: 9.5pt;
+    line-height: 1.5;
+    padding-bottom: 0;
+  }
+
   .hero,
   main,
   .footer {
@@ -561,19 +573,38 @@ body.dark .hero__quick-nav a {
 
   .hero {
     min-height: auto;
-    grid-template-columns: 310px 1fr;
-    gap: 28px;
+    grid-template-columns: 200px 1fr;
+    flex-direction: column;
     align-items: center;
-    padding: 20px 0 12px;
+    padding: 0 0 10pt;
   }
 
   .hero__profile {
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 
   .profile-frame {
-    width: 210px;
-    height: 210px;
+    width: 160px;
+    height: 160px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 20pt;
+    margin: 5pt 0;
+  }
+
+  .eyebrow {
+    font-size: 7pt;
+  }
+
+  .subtitle {
+    font-size: 9pt;
+  }
+
+  .contact-list {
+    gap: 4pt;
+    margin-top: 8pt;
   }
 
   .hero__quick-nav,
@@ -581,11 +612,69 @@ body.dark .hero__quick-nav a {
     display: none !important;
   }
 
+  .footer a[href="#top"] {
+    display: none;
+  }
+
   .section {
     box-shadow: none;
-    break-inside: avoid;
     background: #ffffff;
     border-color: #d8dbe4;
+    margin-top: 12pt;
+    padding-top: 3pt;
+  }
+
+  .section > h2 {
+    font-size: 7pt;
+    margin-bottom: 6pt;
+  }
+
+  .section > h2::after {
+    margin-top: 5pt;
+  }
+
+  .dated-item {
+    padding: 5pt 0;
+    break-inside: avoid;
+    grid-template-columns: 120px 1fr;
+    gap: 60px;
+  }
+
+  .dated-item__title {
+    font-size: 9.5pt;
+  }
+
+  .dated-item__text {
+    font-size: 9.5pt;
+  }
+
+  .dated-item__date {
+    font-size: 8pt;
+  }
+
+  .dated-item__subtitle {
+    font-size: 8.5pt;
+    margin-top: 3pt;
+  }
+
+  .dated-item__list {
+    font-size: 8.5pt;
+    line-height: 1.5;
+    margin-top: 3pt;
+  }
+
+  .project-item__role,
+  .project-item__link {
+    font-size: 8pt;
+  }
+
+  .project-item__problems-label {
+    font-size: 7pt;
+    margin: 5pt 0 2pt;
+  }
+
+  .skill-groups {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .stats article,
@@ -602,5 +691,10 @@ body.dark .hero__quick-nav a {
   .card,
   .skill-groups article {
     box-shadow: none !important;
+  }
+
+  .footer {
+    margin-top: 10pt;
+    font-size: 7.5pt;
   }
 }
