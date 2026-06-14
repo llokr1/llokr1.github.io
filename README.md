@@ -256,6 +256,3 @@
   - 교체 시 파일명/경로를 유지하면 코드 수정 없이 반영됩니다.
 - **테마/다운로드 버튼 아이콘**: `assets/icons/` 아래 SVG들
   - `script.js`에서 라이트/다크에 따라 아이콘 파일을 바꿔 끼웁니다.
-
-# llokr1.github.io
-My portfolio webpage
