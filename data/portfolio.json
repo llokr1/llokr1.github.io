@@ -55,7 +55,6 @@
       "github": "https://github.com/PitterPetter",
       "url": "",
       "highlights": [
-        "수동 배포 프로세스를 자동화해 배포 시간 15분 → 2분으로 단축",
         "브랜치별 환경 분리(dev/prod)로 실수로 인한 프로덕션 장애 방지"
       ]
     }
