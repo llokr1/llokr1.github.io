@@ -27,7 +27,7 @@
     ]
   },
   "intro": {
-    "text": "'왜 이렇게 동작할까?'라는 의문에서 학습이 시작된다고 믿습니다.\n단순히 사용하는 것을 넘어, 서버와 인프라가 어떻게 작동하는지를 탐구해 나가는 것을 좋아합니다.\nOpenStack, Kubernetes 기반 플랫폼 운영에 관심을 갖고, 클라우드 환경을 안정적으로 운영할 수 있는 엔지니어로 성장하고 싶습니다.",
+    "text": "'왜 이렇게 동작할까?'라는 의문에서 학습이 시작된다고 생각합니다.\n단순히 사용하는 것을 넘어, 서버와 인프라가 어떻게 작동하는지를 탐구해 나가는 것을 좋아합니다.\nOpenStack, Kubernetes 기반 플랫폼 운영에 관심을 갖고, 클라우드 환경을 안정적으로 운영할 수 있는 엔지니어로 성장하고 싶습니다.",
     "stats": [
 
     ]
@@ -48,16 +48,29 @@
 
   "project": [
     {
+      "title": "Vibot",
+      "period": "2025.10 – 2025.12",
+      "role": "인프라 담당",
+      "description": "KakaoWork 챗봇 기반 사내 정보 조회 서비스의 인프라 설계 및 구축",
+      "github": "https://github.com/llokr1/Vibot",
+      "url": "",
+      "highlights": [
+        "Terraform 활용 Kakao Cloud 네트워크 및 Kubernetes 클러스터 전체 프로비저닝 (IaC)",
+        "PostgreSQL Streaming Replication으로 HA 구성 및 백업 자동화"
+      ]
+    },
+    {
       "title": "Loventure",
-      "period": "2025.09 – 2025.12",
+      "period": "2025.09 – 2025.10",
       "role": "인프라 / 배포 담당",
       "description": "GitHub Actions + ArgoCD 기반 자동화 배포 파이프라인 구축",
       "github": "https://github.com/PitterPetter",
       "url": "",
       "highlights": [
-        "브랜치별 환경 분리(dev/prod)로 실수로 인한 프로덕션 장애 방지"
+        "브랜치별 환경 분리(dev/prod) → 실수로 인한 프로덕션 장애 방지"
       ]
     }
+
   ],
 
   "education": [
@@ -73,8 +86,9 @@
     }
   ],
   "etc": [
-    { "date": "2026.04 - ", "text": "오픈소스 컨트리뷰션 아카데미(OSSCA) OpenStack 체험형 프로젝트 참여" },
-    { "date": "2026.03 - ", "text": "클라우드 IT 연합 동아리 Cloud Club" },
+    { "date": "2026.07 - ", "text": "오픈소스 컨트리뷰션 아카데미(OSSCA) OpenStack & Kubernetes 참여형 프로젝트"},
+    { "date": "2026.04 - 2026.06", "text": "오픈소스 컨트리뷰션 아카데미(OSSCA) OpenStack 체험형 프로젝트" },
+    { "date": "2026.03 - 2026.06", "text": "클라우드 IT 연합 동아리 Cloud Club" },
     { "date": "2025.09 - 2025.12", "text": "대학기업협력형 카카오엔터프라이즈 SW아카데미 7기 수료" },
     { "date": "2025.03 - 2025.08", "text": "개발 연합 동아리 UMC 8기 SpringBoot 파트 수료" }
   ],
