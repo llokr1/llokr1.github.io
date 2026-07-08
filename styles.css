@@ -42,16 +42,18 @@ main,
 .hero {
   min-height: 60vh;
   display: grid;
-  grid-template-columns: 380px 1fr auto;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 56px;
   padding: 20px 0;
-  justify-items: center;
+  justify-items: start;
 }
 
 .hero__profile {
+  /* 프로필 사진 임시 비공개 처리. 복구 시 display: none 제거하고
+     .hero의 grid-template-columns를 "380px 1fr auto", justify-items를 center로 되돌릴 것 */
+  display: none;
   position: relative;
-  display: flex;
   justify-content: flex-end;
   width: 100%;
 }
