@@ -1,0 +1,561 @@
+/* Portfolio page — reuses .hero/.section/.skill-groups/.timeline/.simple-list
+   from styles.css so the on-screen page reads as a normal portfolio site, matching
+   the resume's visual language. This file only adds the portfolio-only pieces
+   (project storytelling blocks) and the print-only landscape pagination. */
+
+/* Each major section fills roughly one screen, so scrolling through the
+   portfolio feels like paging through a deck without it actually being one.
+   scroll-snap turns that empty space into a deliberate "next screen" beat
+   instead of dead scroll — proximity (not mandatory) so it stays gentle. */
+html {
+  scroll-snap-type: y proximity;
+}
+
+/* Portfolio needs more room than the resume's narrower reading column —
+   project text + media side by side, longer story-block content, etc. */
+.portfolio-body main,
+.portfolio-body .footer {
+  width: min(1180px, 90%);
+}
+
+/* About = the page's cover screen: profile photo + greeting/name/interest/
+   tagline/contacts, followed immediately by philosophy in the same section
+   (no forced scroll boundary between them). */
+#about,
+#experience,
+#project,
+#skills,
+#deepdive,
+#activity {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.about__top {
+  display: flex;
+  flex-direction: column;
+  row-gap: 22px;
+}
+
+.hero__name {
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.hero__keyword {
+  font-weight: 800;
+  background: linear-gradient(rgba(63, 102, 199, 0) 55%, rgba(63, 102, 199, 0.35) 55%);
+}
+
+.about__intro {
+  min-width: 0;
+}
+
+.about__contacts {
+  margin-top: 0;
+}
+
+#heroGreeting {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.hero__philosophy {
+  margin-top: 56px;
+  max-width: 860px;
+}
+
+.hero__philosophy dt {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin-top: 36px;
+}
+
+.hero__philosophy dt:first-child {
+  margin-top: 0;
+}
+
+.hero__philosophy dd {
+  margin: 6px 0 0;
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* Project showcase — projects stack vertically, separated by a thin divider
+   line rather than boxed cards (fine if the section runs taller than one
+   screen). Text and media sit side by side within each project. */
+.project-list {
+  display: grid;
+}
+
+.project-block,
+.exp-block {
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+}
+
+.project-block:first-child,
+.exp-block:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.project-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+
+.project-block__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 0 8px;
+}
+
+.project-block__header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.project-block__title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.project-block__header-left .role {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.project-block__period {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.project-block__oneliner {
+  color: var(--text);
+  margin: 0 0 14px;
+}
+
+.project-block__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 16px;
+}
+
+.project-block__stack span {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.project-block__links {
+  display: flex;
+  flex-shrink: 0;
+  gap: 14px;
+}
+
+.project-block__links a {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.project-block__links a:hover {
+  color: var(--primary);
+}
+
+.story-block {
+  margin: 0 0 12px;
+}
+
+.story-block__label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.story-block p,
+.story-block li {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.story-block ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.story-block .is-placeholder {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* My Contribution — each contribution point pairs a short summary with its
+   concrete process/result, rather than separate Solution/Result lists. */
+.contribution-list {
+  display: grid;
+  gap: 14px;
+}
+
+.contribution-item__summary {
+  font-weight: 600;
+}
+
+.story-block .contribution-item__detail {
+  margin-top: 4px;
+  padding-left: 18px;
+}
+
+.story-block .contribution-item__result {
+  margin-top: 4px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.story-block .contribution-item__result li {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.story-block .contribution-item__result li + li {
+  margin-top: 2px;
+}
+
+.story-block .contribution-item__detail li {
+  color: var(--muted);
+}
+
+.project-image-placeholder {
+  width: 100%;
+  min-height: 220px;
+  border: 1.5px dashed var(--line);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  background: var(--surface);
+}
+
+/* Project media — up to 2 free-form photos/videos per project, stacked in
+   the narrower media column next to the project text. */
+.project-media {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.project-media-item {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.project-media-item--image img {
+  display: block;
+  width: 100%;
+  flex: 1;
+  min-height: 200px;
+  object-fit: cover;
+}
+
+.project-media-item--video video {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  background: #000;
+}
+
+.project-media-item__caption {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 3px 10px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.project-media-item__print-fallback {
+  display: none;
+}
+
+/* Skills — one technology per row, name and description placed side by
+   side (name in a fixed-width column, like the date column elsewhere). */
+.skill-groups {
+  display: grid;
+}
+
+.skill-groups article {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 40px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.skill-groups article:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.skill-groups h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.skill-groups .skill-context {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* Deep Dive */
+.deepdive-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.deepdive-item {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.deepdive-item__title {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.deepdive-item__summary {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.deepdive-item__links {
+  margin-top: 12px;
+  font-size: 0.85rem;
+}
+
+.deepdive-item__links a {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.deepdive-item__links a:hover {
+  color: var(--primary);
+}
+
+/* Activity — open source contributions get their own labeled group so they
+   don't blend into general club/community activity entries. */
+.activity-group + .activity-group {
+  margin-top: 28px;
+}
+
+.activity-group h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  .project-block,
+  .skill-groups article {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Entrance animation — each full-screen section/project fades and rises
+   into place the first time it scrolls into view (see portfolio.js). */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+}
+
+/* ---- Print: landscape, one slide-ish page per section, nothing clipped ---- */
+
+@page {
+  size: 13.333in 7.5in;
+  margin: 0.55in 0.8in;
+}
+
+@media print {
+  body.portfolio-body {
+    padding-bottom: 0;
+  }
+
+  .print-page {
+    break-before: page;
+    page-break-before: always;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-page--first {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  /* Sections below the fold may never have scrolled into view (and so never
+     got their .is-visible class) before the user hits print — force every
+     .reveal element visible so nothing prints as a blank page. */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* The 100vh full-screen sizing (and its scroll-snap) is a screen-only
+     affordance; printed pages are sized by @page instead, so let content
+     take only the height it needs. */
+  html {
+    scroll-snap-type: none;
+  }
+
+  #about,
+  #experience,
+  #project,
+  #skills,
+  #deepdive,
+  #activity,
+  .project-block {
+    min-height: 0;
+    scroll-snap-align: none;
+  }
+
+  /* Trim About's vertical rhythm a bit for print so the intro + philosophy
+     comfortably fit on one landscape page instead of spilling one extra line
+     onto a near-empty second page. */
+  .about__top {
+    row-gap: 14px;
+  }
+
+  .hero__philosophy {
+    margin-top: 28px;
+  }
+
+  .hero__philosophy dt {
+    margin-top: 20px;
+  }
+
+  /* Same paper-width media-query quirk as .about__top — force the skill
+     name/description columns back to side by side for print. */
+  .skill-groups article {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+
+  /* CSS Grid fragments badly across printed pages (columns/rows can split
+     onto separate pages instead of flowing predictably) — force the project
+     list and each project's text|media grid back to plain block flow for
+     print so each project reliably gets its own page. */
+  .project-list {
+    display: block;
+  }
+
+  .project-block {
+    display: block;
+  }
+
+  /* Landscape pages are much wider than the on-screen container, so cap the
+     media column's width instead of letting it stretch edge to edge. Chromium
+     doesn't reliably honor break-inside:avoid on flex children, so the
+     avoid-break rule needs to sit on this plain block wrapper (not just the
+     flex items inside .project-media) or a tall image can get visually
+     sliced across the page boundary instead of moving to the next page. */
+  .project-block__media {
+    margin-top: 18px;
+    max-width: 70%;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Some print pipelines evaluate max-width media queries against the
+     selected paper width rather than our @page size, which can silently
+     trigger the mobile column-stacking fallback below during printing (same
+     quirk as .about__top above) — force the side-by-side row back on. */
+  .project-media {
+    flex-direction: row;
+  }
+
+  .project-image-placeholder {
+    min-height: 160px;
+  }
+
+  .project-media-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .project-media-item--image img {
+    max-height: 220px;
+  }
+
+  /* Videos can't be embedded in a PDF — show a link instead of a blank box. */
+  .project-media-item--video video {
+    display: none;
+  }
+
+  .project-media-item__print-fallback {
+    display: block;
+    padding: 14px;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "hero": {
+    "role": "클라우드 엔지니어링",
+    "name": "홍진기",
+    "tagline": "서비스의 배포 및 운영 환경을 안정적으로 운영하고 싶습니다.",
+    "photo": null,
+    "greetingLead": "도전과 기록을 좋아하는",
+    "greetingKeywords": ["도전", "기록"],
+    "philosophy": [
+      { "label": "클라우드 엔지니어를 희망하고 있습니다.", "text": "클라우드 환경에서 서비스를 안정적으로 운영하고 싶습니다." },
+      { "label": "경험을 나누며 함께 성장하는 것을 좋아합니다.", "text": "학습한 내용을 블로그에 기록하는 것을 좋아하고, 많은 사람들과 각자의 방식으로 도전한 경험을 공유하는 것을 좋아합니다." },
+      { "label": "자동화를 통해 실수를 줄이고 일관된 결과를 추구합니다.", "text": "인프라를 코드화(IaC)하고, CI/CD 파이프라인을 구성해 배포를 자동화했습니다.\n API를 활용한 환경 구축 자동화 스크립트도 개발한 경험이 있습니다." }
+    ],
+    "contacts": [
+      {
+        "label": "Email",
+        "value": "ghdwlsrl100@gachon.ac.kr",
+        "url": "mailto:ghdwlsrl100@gachon.ac.kr"
+      },
+      {
+        "label": "GitHub",
+        "value": "github.com/llokr1",
+        "url": "https://github.com/llokr1"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "linkedin.com/in/llokr",
+        "url": "https://www.linkedin.com/in/llokr"
+      },
+      {
+        "label": "Blog",
+        "value": "llokr님의 블로그",
+        "url": "https://blog.llokr.kr/"
+      }
+    ]
+  },
+
+  "intro": {
+    "text": "'왜 이렇게 동작할까?'라는 의문에서 학습이 시작된다고 생각합니다.\n단순히 사용하는 것을 넘어, 서버와 인프라가 어떻게 작동하는지를 탐구해 나가는 것을 좋아합니다.\nOpenStack, Kubernetes 기반 플랫폼 운영에 관심을 갖고, 클라우드 환경을 안정적으로 운영할 수 있는 엔지니어로 성장하고 싶습니다."
+  },
+
+  "experience": [
+    {
+      "period": "2026.02 ~ 2026.04",
+      "title": "카카오엔터프라이즈 - 클라우드 솔루션팀",
+      "role": "인턴",
+      "description": "카카오클라우드 자격 인증 콘텐츠 제작부터 교육 운영 보조, 자동화 스크립트 개발까지 담당했습니다.",
+      "items": [
+        { "summary": "카카오클라우드 자격 인증 문항 출제 및 가이드북 제작" },
+        { "summary": "카카오클라우드 교육 콘텐츠 감수 및 제작" },
+        { "summary": "K-Digital Training 교육 운영 보조" },
+        { "summary": "국가 GPU 지원 교육(GPUaaS) 운영 보조" },
+        {
+          "summary": "Open API 활용 카카오클라우드 교육 환경 구축 자동화 스크립트 개발",
+          "detail": [
+            "Kakao Cloud REST API로 VPC·서브넷 생성과 리소스 상태 polling을 자동화한 Python 스크립트 개발",
+            "교육생 40개 계정의 인프라 구축 절차를 표준화하고, 대기, 반복 설정에 드는 작업 시간을 줄여 다른 업무와 병행할 수 있도록 개선"
+          ]
+        }
+      ]
+    }
+  ],
+
+  "project": [
+    {
+      "title": "Vibot",
+      "period": "2025.10 – 2025.12",
+      "role": "인프라 담당",
+      "description": "카카오워크 챗봇 기반 사내 정보 조회 서비스의 인프라 설계 및 구축",
+      "github": "https://github.com/llokr1/Vibot",
+      "url": "",
+      "stack": ["Kakao Cloud", "Terraform", "Kubernetes", "PostgreSQL"],
+      "contribution": [
+        {
+          "summary": "PostgreSQL Streaming Replication을 활용한 HA 구성 및 백업 자동화",
+          "detail": [
+            "Primary, Standby 데이터베이스를 WAL 기반 Streaming Replication으로 동기화",
+            "Replication Monitor(5분 주기)로 복제 지연·연결 상태 상시 점검",
+            "CronJob으로 백업 파일 생성 후 Kakao Cloud Object Storage에 자동 업로드"
+          ],
+          "result": ["관리형 PostgreSQL 서비스 사용 요금 절감"]
+        }
+      ],
+      "media": [
+        { "src": "./data/assets/vibot_system_architecture.png", "alt": "Vibot 시스템 아키텍처 다이어그램" }
+      ],
+      "links": []
+    },
+    {
+      "title": "Loventure",
+      "period": "2025.09 – 2025.10",
+      "role": "인프라 / 배포 담당",
+      "description": "연인 대상 데이트 코스 추천 서비스의 Kubernetes 리소스 및 배포 환경 관리",
+      "github": "https://github.com/PitterPetter",
+      "url": "",
+      "stack": ["GCP" ,"GitHub Actions", "ArgoCD", "Kubernetes", "Docker"],
+      "contribution": [
+        {
+          "summary": "GitHub Actions + ArgoCD 기반 CI/CD 배포 파이프라인 구축",
+          "detail": [
+            "develop 브랜치 → Kakao Cloud(Staging), main 브랜치 → GCP(Production)로 배포 대상을 분리"
+          ],
+          "result" : [
+            "배포 전, 테스트 환경 마련 및 실수로 인한 프로덕션 장애 방지"
+          ]
+        },
+        {
+          "summary": "Spring Boot 서비스 Dockerfile 작성 및 CI 이미지 빌드 최적화",
+          "detail": [
+            "멀티스테이지 빌드로 JDK 빌드 환경과 JRE 런타임 이미지를 분리, 실행에 불필요한 파일 제거",
+            "GitHub Actions에서 BuildKit 캐시를 활용해 레이어를 재사용, 빌드 시간 단축"
+          ],
+          "result": [
+            "이미지 용량 673MB → 169MB로 감소(약 -75%)",
+            "이미지 빌드 단계 약 100초 → 50초로 감소(약 -50%)"
+          ]
+        }
+      ],
+      "media": [
+        { "src": "./data/assets/loventure_system_architecture.png", "alt": "Loventure Prod 환경 시스템 아키텍처 다이어그램" }
+      ],
+      "links": []
+    }
+  ],
+
+  "skills": [],
+
+  "deepDive": [],
+
+  "education": [
+    {
+      "date": "2021.03 - ",
+      "title": "가천대학교 컴퓨터공학과",
+      "subtitle": "재학 중"
+    },
+    {
+      "date": "2018.03 - 2021.02",
+      "title": "경민고등학교",
+      "subtitle": "졸업"
+    }
+  ],
+  "etc": [
+    { "date": "2026.07 - ", "text": "오픈소스 컨트리뷰션 아카데미(OSSCA) OpenStack & Kubernetes 참여형 프로젝트"},
+    { "date": "2026.04 - 2026.06", "text": "오픈소스 컨트리뷰션 아카데미(OSSCA) OpenStack 체험형 프로젝트" },
+    { "date": "2026.03 - 2026.06", "text": "클라우드 IT 연합 동아리 Cloud Club" },
+    { "date": "2025.09 - 2025.12", "text": "대학기업협력형 카카오엔터프라이즈 SW아카데미 7기 수료" },
+    { "date": "2025.03 - 2025.08", "text": "개발 연합 동아리 UMC 8기 SpringBoot 파트 수료" }
+  ],
+  "openSource": [
+    {
+      "type": "contribution",
+      "project": "openstack/openstacksdk",
+      "title": "Identity v3 Service 리소스 기능 테스트 추가",
+      "url": "https://review.opendev.org/c/openstack/openstacksdk/+/958066",
+      "status": "Merged"
+    }
+  ],
+  "footerName": "홍진기"
+}

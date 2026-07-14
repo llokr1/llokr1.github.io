@@ -1,10 +1,6 @@
 const yearEl = document.getElementById("year");
-const themeToggle = document.getElementById("themeToggle");
 const printBtn = document.getElementById("printBtn");
-const themeIcon = document.getElementById("themeIcon");
-const printIcon = document.getElementById("printIcon");
 const quickNavLinks = [...document.querySelectorAll(".hero__quick-nav a")];
-let forcePrintLight = false;
 
 const setText = (id, value) => {
   const el = document.getElementById(id);
@@ -42,13 +38,13 @@ const countMeaningfulItems = (items) => {
   return items.filter((item) => {
     if (isNonEmptyText(item)) return true;
     if (item && typeof item === "object") {
-      return isNonEmptyText(item.text) || isNonEmptyText(item.title);
+      return isNonEmptyText(item.text) || isNonEmptyText(item.title) || isNonEmptyText(item.summary);
     }
     return false;
   }).length;
 };
 
-const renderPortfolio = (data) => {
+const renderResume = (data) => {
   setText("heroRole", data.hero?.role);
   setText("heroName", data.hero?.name);
   setText("heroTagline", data.hero?.tagline);
@@ -72,41 +68,38 @@ const renderPortfolio = (data) => {
     contactList.style.display = contacts.length > 0 ? "" : "none";
   }
 
-  const statsList = document.getElementById("statsList");
-  if (statsList) {
-    const stats = (data.intro?.stats || []).filter(
-      (s) => s && isNonEmptyText(s.value) && isNonEmptyText(s.label)
-    );
-    statsList.innerHTML = stats
-      .map(
-        (stat) => `
-          <article>
-            <h3>${stat.value}</h3>
-            <p>${stat.label}</p>
-          </article>
-        `
-      )
-      .join("");
-    statsList.style.display = stats.length > 0 ? "" : "none";
-  }
-
   const experienceList = document.getElementById("experienceList");
   if (experienceList) {
     const exp = (data.experience || []).filter(
       (e) => e && (isNonEmptyText(e.period) || isNonEmptyText(e.title) || countMeaningfulItems(e.items) > 0)
     );
     experienceList.innerHTML = exp
-      .map(
-        (exp) => `
+      .map((exp) => {
+        const role = typeof exp.role === "string" ? exp.role : "";
+        const desc = typeof exp.description === "string" ? exp.description : "";
+        const bullets = Array.isArray(exp.items)
+          ? exp.items.map((i) => i && i.summary).filter(isNonEmptyText)
+          : [];
+        return `
           <article class="dated-item">
             <div class="dated-item__date">${exp.period || ""}</div>
             <div class="dated-item__body">
-              <h3 class="dated-item__title">${exp.title || ""}</h3>
-              <ul class="dated-item__list">${(exp.items || []).map((item) => `<li>${item}</li>`).join("")}</ul>
+              <div class="project-item__header">
+                <div class="project-item__header-left">
+                  <h3 class="dated-item__title">${exp.title || ""}</h3>
+                  ${role ? `<span class="project-item__role">${role}</span>` : ""}
+                </div>
+              </div>
+              ${desc ? `<p class="dated-item__subtitle">${desc}</p>` : ""}
+              ${bullets.length ? `
+                <div>
+                  <span class="project-item__problems-label">상세 내용</span>
+                  <ul class="dated-item__list">${bullets.map((item) => `<li>${item}</li>`).join("")}</ul>
+                </div>` : ""}
             </div>
           </article>
-        `
-      )
+        `;
+      })
       .join("");
     setSectionVisible("experience", exp.length > 0);
   }
@@ -114,7 +107,7 @@ const renderPortfolio = (data) => {
   const projectList = document.getElementById("projectList");
   if (projectList) {
     const projects = (data.project || []).filter(
-      (p) => p && (isNonEmptyText(p.title) || isNonEmptyText(p.description) || countMeaningfulItems(p.highlights) > 0)
+      (p) => p && (isNonEmptyText(p.title) || isNonEmptyText(p.description) || countMeaningfulItems(p.contribution) > 0)
     );
     projectList.innerHTML = projects
       .map((project) => {
@@ -124,8 +117,8 @@ const renderPortfolio = (data) => {
         const desc = typeof project.description === "string" ? project.description : "";
         const github = typeof project.github === "string" ? project.github : "";
         const url = typeof project.url === "string" ? project.url : "";
-        const bullets = Array.isArray(project.highlights)
-          ? project.highlights.filter(isNonEmptyText)
+        const bullets = Array.isArray(project.contribution)
+          ? project.contribution.map((c) => c && c.summary).filter(isNonEmptyText)
           : [];
 
         const linkParts = [];
@@ -154,26 +147,12 @@ const renderPortfolio = (data) => {
         `;
       })
       .join("");
-    setSectionVisible("projects", projects.length > 0);
+    setSectionVisible("project", projects.length > 0);
   }
 
-  const skillGroups = document.getElementById("skillGroups");
-  if (skillGroups) {
-    const skills = (data.skills || []).filter(
-      (s) => s && (isNonEmptyText(s.group) || isNonEmptyText(s.items))
-    );
-    skillGroups.innerHTML = skills
-      .map(
-        (skill) => `
-          <article>
-            <h3>${skill.group}</h3>
-            <p>${skill.items}</p>
-          </article>
-        `
-      )
-      .join("");
-    setSectionVisible("skills", skills.length > 0);
-  }
+  // Resume intentionally ignores the skills section (portfolio-only content) —
+  // keep the resume layout exactly as before, with no Skills section.
+  setSectionVisible("skills", false);
 
   const presentationList = document.getElementById("presentationList");
   if (presentationList) {
@@ -286,53 +265,15 @@ const renderPortfolio = (data) => {
     setSectionVisible("etc", etc.length > 0);
   }
 
-  const hasIntro = isNonEmptyText(data.intro?.text) || countMeaningfulItems(data.intro?.stats) > 0;
+  const hasIntro = isNonEmptyText(data.intro?.text);
   setSectionVisible("intro", hasIntro);
 
   setText("footerName", data.footerName);
 };
 
 const setupUiInteractions = () => {
-  const applyButtonIcons = () => {
-    const isDark = document.body.classList.contains("dark");
-    if (themeIcon) {
-      themeIcon.src = isDark
-        ? "./assets/icons/DarkModeButton.svg"
-        : "./assets/icons/LightModeButton.svg";
-    }
-    if (printIcon) {
-      printIcon.src = isDark
-        ? "./assets/icons/DarkModeDownloadButton.svg"
-        : "./assets/icons/LightModeDownloadButton.svg";
-    }
-  };
-
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-  }
-  applyButtonIcons();
-
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem(
-      "theme",
-      document.body.classList.contains("dark") ? "dark" : "light"
-    );
-    applyButtonIcons();
-  });
-
   printBtn.addEventListener("click", () => {
-    forcePrintLight = true;
-    document.body.classList.add("print-light");
     window.print();
-  });
-
-  window.addEventListener("afterprint", () => {
-    if (forcePrintLight) {
-      document.body.classList.remove("print-light");
-      forcePrintLight = false;
-    }
   });
 
   const sections = quickNavLinks
@@ -356,9 +297,9 @@ const setupUiInteractions = () => {
 
 const init = async () => {
   try {
-    const response = await fetch("./data/portfolio.json");
-    const portfolio = await response.json();
-    renderPortfolio(portfolio);
+    const response = await fetch("./data/profile.json");
+    const profile = await response.json();
+    renderResume(profile);
   } catch (error) {
     console.error("Failed to load portfolio data:", error);
   } finally {
