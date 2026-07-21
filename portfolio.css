@@ -501,27 +501,58 @@ html {
     grid-template-columns: 180px minmax(0, 1fr);
   }
 
-  /* CSS Grid fragments badly across printed pages (columns/rows can split
-     onto separate pages instead of flowing predictably) — force the project
-     list and each project's text|media grid back to plain block flow for
-     print so each project reliably gets its own page. */
+  /* Unlike #about/#skills/#deepdive/#activity — where print-page sits on the
+     <section> itself, so its own h2 always travels with it — Experience and
+     Project put print-page on each repeated exp-block/project-block instead
+     (so every item gets its own page). That leaves their h2 outside any
+     print-page element: it just flows wherever it lands, and since a forced
+     break-before wins over break-after:avoid on the previous element, the
+     heading can't just ask to stick to what follows. Concretely this
+     stranded "EXPERIENCE"/"PROJECT" alone at the bottom of the previous
+     page with the real content starting cold, headerless, on the next.
+     Fix: force the section itself to start a fresh page (so the heading
+     always leads), then cancel the first item's own forced break so it
+     doesn't open a second, near-empty page right after. */
+  #experience,
+  #project {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .exp-block:first-child,
+  .project-block:first-child {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  /* CSS Grid fragments badly across printed pages when a grid itself has to
+     split mid-container — force the project list back to plain block flow
+     so stacking multiple projects doesn't hit that. .project-block keeps its
+     screen-style two-column (text|media) grid, though: it's already a
+     print-page with break-inside: avoid, so as one atomic unit it either
+     fits whole on a page or moves whole to the next — no mid-grid split —
+     and side by side is shorter overall than stacking text above media, so
+     it's more likely to actually fit on the project's own page instead of
+     spilling the media onto a near-empty page by itself. */
   .project-list {
     display: block;
   }
 
+  /* Same paper-width media-query quirk as .about__top/.skill-groups — without
+     this the print pipeline silently applies the @media (max-width: 900px)
+     mobile fallback and collapses .project-block to a single column, which
+     is exactly the stacked-then-overflow layout this fix is undoing. Force
+     the screen's side-by-side text|media columns back for print. */
   .project-block {
-    display: block;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   }
 
-  /* Landscape pages are much wider than the on-screen container, so cap the
-     media column's width instead of letting it stretch edge to edge. Chromium
-     doesn't reliably honor break-inside:avoid on flex children, so the
-     avoid-break rule needs to sit on this plain block wrapper (not just the
-     flex items inside .project-media) or a tall image can get visually
-     sliced across the page boundary instead of moving to the next page. */
+  /* Chromium doesn't reliably honor break-inside:avoid on flex children, so
+     the avoid-break rule needs to sit on this plain block wrapper (not just
+     the flex items inside .project-media) or a tall image can get visually
+     sliced across the page boundary instead of moving with the rest of the
+     block. */
   .project-block__media {
-    margin-top: 18px;
-    max-width: 70%;
     break-inside: avoid;
     page-break-inside: avoid;
   }

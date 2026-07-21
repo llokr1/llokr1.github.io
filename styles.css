@@ -482,6 +482,12 @@ a:focus-visible {
   .section > h2 {
     font-size: 7pt;
     margin-bottom: 6pt;
+    /* Without this a section heading can land right at a page boundary with
+       its first entry pushed to the next page, printing as a lone label
+       above a large gap. Keeping it glued to what follows moves both down
+       together instead. */
+    break-after: avoid;
+    page-break-after: avoid;
   }
 
   .section > h2::after {
